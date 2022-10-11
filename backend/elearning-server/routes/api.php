@@ -42,4 +42,5 @@ Route::group(['middleware' => ['admin.instructor.role']], function () {
 
 Route::group(['middleware' => ['instructor.role']], function () {
     Route::post('/assignments', [AssignmentController::class, 'createAssignment']);
+    Route::put('/assignments/{id}', [AssignmentController::class, 'updateAssignment']);
 });
