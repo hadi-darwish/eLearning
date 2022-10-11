@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
@@ -36,4 +37,9 @@ Route::group(['middleware' => ['admin.instructor.role']], function () {
     Route::post('/announcements', [AnnouncementController::class, 'createAnnouncement']);
     Route::put('/announcements/{id}', [AnnouncementController::class, 'updateAnnouncement']);
     Route::delete('/announcements/{id}', [AnnouncementController::class, 'deleteAnnouncement']);
+});
+
+
+Route::group(['middleware' => ['instructor.role']], function () {
+    Route::post('/assignments', [AssignmentController::class, 'createAssignment']);
 });
