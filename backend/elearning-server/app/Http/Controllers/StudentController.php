@@ -16,4 +16,17 @@ class StudentController extends Controller
             'courses' => $courses,
         ]);
     }
+
+    public function addSolution(Request $request)
+    {
+        $user = Auth::user();
+        $user->solutions = [
+            'assignment_id' => $request->assignment_id,
+            'solution' => $request->solution,
+        ];
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Solution added',
+        ]);
+    }
 }

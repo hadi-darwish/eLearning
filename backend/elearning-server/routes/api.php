@@ -4,6 +4,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('solve', [StudentController::class, 'addSolution']);
+Route::get('/announcements', [AnnouncementController::class, 'getAllAnnouncements']);
+Route::get('/announcements/{id}', [AnnouncementController::class, 'getAnnouncement']);
 
 
 
@@ -31,8 +35,6 @@ Route::group(['middleware' => ['admin.role']], function () {
 
 
 Route::group(['middleware' => ['admin.instructor.role']], function () {
-    Route::get('/announcements', [AnnouncementController::class, 'getAllAnnouncements']);
-    Route::get('/announcements/{id}', [AnnouncementController::class, 'getAnnouncement']);
     Route::post('/announcements', [AnnouncementController::class, 'createAnnouncement']);
     Route::put('/announcements/{id}', [AnnouncementController::class, 'updateAnnouncement']);
     Route::delete('/announcements/{id}', [AnnouncementController::class, 'deleteAnnouncement']);
