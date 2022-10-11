@@ -63,4 +63,20 @@ class AnnouncementController extends Controller
             'announcement' => $announcement,
         ]);
     }
+
+    public function deleteAnnouncement($id)
+    {
+        $announcement = Announcement::find($id);
+        if (!$announcement) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Announcement not found',
+            ], 404);
+        }
+        $announcement->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Announcement deleted',
+        ]);
+    }
 }
