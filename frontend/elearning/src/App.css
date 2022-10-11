@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.App {
+  max-width: 100vw;
+  overflow: hidden;
+}
+.app-body {
+  padding: 1rem;
+}
+.table-container {
+  overflow: auto;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: end;
+  padding: 0.2rem;
+}
