@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
@@ -21,9 +22,14 @@ Route::post('register', [AuthController::class, 'register']);
 
 
 
-Route::group(['middleware' => ['auth:api']], function () {
+Route::group(['middleware' => ['admin.role']], function () {
     Route::get('/courses', [CourseController::class, 'getAllCourses']);
     Route::get('/courses/{id}', [CourseController::class, 'getCourse']);
     Route::post('/courses', [CourseController::class, 'createCourse']);
     Route::put('/courses/{id}', [CourseController::class, 'updateCourse']);
+});
+
+
+Route::group(['middleware' => ['instructor.role']], function () {
+    Route::get('/announcements', [AnnouncementController::class, 'getAllAnnouncements']);
 });
