@@ -35,4 +35,5 @@ Route::group(['middleware' => ['instructor.role']], function () {
     Route::get('/announcements/{id}', [AnnouncementController::class, 'getAnnouncement']);
     Route::post('/announcements', [AnnouncementController::class, 'createAnnouncement']);
     Route::put('/announcements/{id}', [AnnouncementController::class, 'updateAnnouncement']);
+    Route::delete('/announcements/{id}', [AnnouncementController::class, 'deleteAnnouncement']);
 });
