@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
 
 
 
@@ -37,6 +36,7 @@ Route::group(['middleware' => ['admin.instructor.role']], function () {
     Route::post('/announcements', [AnnouncementController::class, 'createAnnouncement']);
     Route::put('/announcements/{id}', [AnnouncementController::class, 'updateAnnouncement']);
     Route::delete('/announcements/{id}', [AnnouncementController::class, 'deleteAnnouncement']);
+    Route::post('register', [AuthController::class, 'register']);
 });
 
 
