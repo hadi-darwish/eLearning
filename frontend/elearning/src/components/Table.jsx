@@ -1,3 +1,4 @@
+import "./Table.css";
 export default function Table({ rows, setRows }) {
   return (
     <>
