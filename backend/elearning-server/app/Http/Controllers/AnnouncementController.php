@@ -29,4 +29,22 @@ class AnnouncementController extends Controller
             'announcement' => $announcement,
         ]);
     }
+
+    public function createAnnouncement(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'user_id' => 'required|string',
+        ]);
+        $announcement = Announcement::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+        ]);
+        return response()->json([
+            'status' => 'success',
+            'announcement' => $announcement,
+        ]);
+    }
 }
