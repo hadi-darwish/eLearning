@@ -1,3 +1,4 @@
+import "./Form.css";
 import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
