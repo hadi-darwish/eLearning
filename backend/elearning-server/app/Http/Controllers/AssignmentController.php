@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignment;
 use Illuminate\Http\Request;
+use Auth;
+
 
 class AssignmentController extends Controller
 {
@@ -68,9 +70,10 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function getAssignmentsByInstructor($instructor_id)
+    public function getAssignmentsByInstructor()
     {
-        $assignments = Assignment::where('instructor_id', $instructor_id)->get();
+        $user = Auth::user();
+        $assignments = Assignment::where('instructor_id', $user->id)->get();
         return response()->json([
             'status' => 'success',
             'assignments' => $assignments,
