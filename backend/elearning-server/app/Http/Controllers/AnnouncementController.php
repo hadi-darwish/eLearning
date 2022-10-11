@@ -47,4 +47,20 @@ class AnnouncementController extends Controller
             'announcement' => $announcement,
         ]);
     }
+
+    public function updateAnnouncement(Request $request, $id)
+    {
+        $announcement = Announcement::find($id);
+        if (!$announcement) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Announcement not found',
+            ], 404);
+        }
+        $announcement->update($request->all());
+        return response()->json([
+            'status' => 'success',
+            'announcement' => $announcement,
+        ]);
+    }
 }
