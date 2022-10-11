@@ -42,4 +42,20 @@ class AssignmentController extends Controller
             'assignment' => $assignment,
         ]);
     }
+
+    public function deleteAssignment($id)
+    {
+        $assignment = Assignment::find($id);
+        if (!$assignment) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Assignment not found',
+            ], 404);
+        }
+        $assignment->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Assignment deleted',
+        ]);
+    }
 }
