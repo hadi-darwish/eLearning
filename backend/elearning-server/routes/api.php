@@ -24,4 +24,5 @@ Route::post('register', [AuthController::class, 'register']);
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/courses', [CourseController::class, 'getAllCourses']);
     Route::get('/courses/{id}', [CourseController::class, 'getCourse']);
+    Route::post('/courses', [CourseController::class, 'createCourse']);
 });
