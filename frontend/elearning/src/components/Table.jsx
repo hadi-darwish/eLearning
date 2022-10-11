@@ -10,7 +10,6 @@ export default function Table({ rows, setRows }) {
             <th>Email</th>
             <th>Password</th>
             <th>role</th>
-            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
