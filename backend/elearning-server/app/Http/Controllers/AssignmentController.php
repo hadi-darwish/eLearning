@@ -58,4 +58,13 @@ class AssignmentController extends Controller
             'message' => 'Assignment deleted',
         ]);
     }
+
+    public function getAssignmentsByCourse($course_id)
+    {
+        $assignments = Assignment::where('course_id', $course_id)->get();
+        return response()->json([
+            'status' => 'success',
+            'assignments' => $assignments,
+        ]);
+    }
 }
