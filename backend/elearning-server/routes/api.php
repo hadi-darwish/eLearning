@@ -33,4 +33,5 @@ Route::group(['middleware' => ['admin.role']], function () {
 Route::group(['middleware' => ['instructor.role']], function () {
     Route::get('/announcements', [AnnouncementController::class, 'getAllAnnouncements']);
     Route::get('/announcements/{id}', [AnnouncementController::class, 'getAnnouncement']);
+    Route::post('/announcements', [AnnouncementController::class, 'createAnnouncement']);
 });
