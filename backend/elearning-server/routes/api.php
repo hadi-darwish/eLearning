@@ -44,5 +44,5 @@ Route::group(['middleware' => ['instructor.role']], function () {
     Route::post('/assignments', [AssignmentController::class, 'createAssignment']);
     Route::put('/assignments/{id}', [AssignmentController::class, 'updateAssignment']);
     Route::delete('/assignments/{id}', [AssignmentController::class, 'deleteAssignment']);
-    Route::get('/assignments/{instructor_id}', [AssignmentController::class, 'getAssignmentsByInstructor']);
+    Route::get('/assignments', [AssignmentController::class, 'getAssignmentsByInstructor']);
 });
