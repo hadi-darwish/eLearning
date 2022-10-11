@@ -26,4 +26,20 @@ class AssignmentController extends Controller
             'assignment' => $assignment,
         ]);
     }
+
+    public function updateAssignment(Request $request, $id)
+    {
+        $assignment = Assignment::find($id);
+        if (!$assignment) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Assignment not found',
+            ], 404);
+        }
+        $assignment->fill($request->all())->save();
+        return response()->json([
+            'status' => 'success',
+            'assignment' => $assignment,
+        ]);
+    }
 }
