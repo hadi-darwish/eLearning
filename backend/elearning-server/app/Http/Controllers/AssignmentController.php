@@ -67,4 +67,13 @@ class AssignmentController extends Controller
             'assignments' => $assignments,
         ]);
     }
+
+    public function getAssignmentsByInstructor($instructor_id)
+    {
+        $assignments = Assignment::where('instructor_id', $instructor_id)->get();
+        return response()->json([
+            'status' => 'success',
+            'assignments' => $assignments,
+        ]);
+    }
 }
