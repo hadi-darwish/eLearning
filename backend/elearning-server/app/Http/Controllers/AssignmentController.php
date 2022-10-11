@@ -16,7 +16,6 @@ class AssignmentController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'course_id' => 'required|string',
-            'instructor_id' => 'required|string',
         ]);
         $assignment = Assignment::create([
             'title' => $request->title,
