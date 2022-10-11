@@ -11,6 +11,7 @@ class AssignmentController extends Controller
 {
     public function createAssignment(Request $request)
     {
+        $user = Auth::user();
         $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
@@ -21,7 +22,7 @@ class AssignmentController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'course_id' => $request->course_id,
-            'instructor_id' => $request->instructor_id,
+            'instructor_id' => $user->id,
         ]);
         return response()->json([
             'status' => 'success',
